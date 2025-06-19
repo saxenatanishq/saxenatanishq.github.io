@@ -26,7 +26,7 @@ const Header = () => {
         <nav className="flex items-center space-x-4 md:space-x-6">
           <div className="hidden md:flex items-center space-x-4 ml-4">
             <a
-              href="#"
+              href="https://saxenatanishq.github.io/resume.pdf"
               target="_blank"
               className="btn-header bg-blue-700 text-white hover:bg-blue-900 text-sm"
             >
