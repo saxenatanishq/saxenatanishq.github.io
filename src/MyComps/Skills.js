@@ -21,6 +21,8 @@ const Skills = () => {
         { icon: "fas fa-server text-gray-500", name: "Express" },
         { icon: "fab fa-bootstrap text-purple-600", name: "Bootstrap" },
         { icon: "fab fa-react text-violet-600", name: "React.js"},
+        { icon: "fas fa-cubes text-green-600", name: "NumPy" },
+        { icon: "fas fa-table text-blue-600", name: "Pandas" },
       ],
     },
     {
