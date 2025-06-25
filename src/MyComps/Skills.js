@@ -16,13 +16,13 @@ const Skills = () => {
     {
       category: "Frameworks/Libraries",
       items: [
+        { icon: "fas fa-cubes text-green-600", name: "NumPy" },
+        { icon: "fas fa-table text-blue-600", name: "Pandas" },
         { icon: "fas fa-leaf text-green-700", name: "Django" },
         { icon: "fab fa-node-js text-green-500", name: "Node.js" },
         { icon: "fas fa-server text-gray-500", name: "Express" },
         { icon: "fab fa-bootstrap text-purple-600", name: "Bootstrap" },
         { icon: "fab fa-react text-violet-600", name: "React.js"},
-        { icon: "fas fa-cubes text-green-600", name: "NumPy" },
-        { icon: "fas fa-table text-blue-600", name: "Pandas" },
       ],
     },
     {
@@ -30,7 +30,7 @@ const Skills = () => {
       items: [
         { icon: "fas fa-database text-blue-400", name: "SQLite" },
         { icon: "fab fa-git-alt text-orange-600", name: "Git & GitHub" },
-        { icon: "fas fa-code text-blue-500", name: "VS Code" },
+        { icon: "fas fa-leaf text-green-600", name: "MongoDB" },
         { icon: "fas fa-share-alt text-red-500", name: "Postman" },
         { icon: "fab fa-linux text-gray-700", name: "Linux" },
       ],
