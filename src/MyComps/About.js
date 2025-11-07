@@ -1,8 +1,8 @@
 import React from 'react'
 
 const About = () => {
-    const para1 = "Hey! I’m Tanishq Saxena, a 1st year undergrad at IIT Kharagpur (CSE). I’m a tech enthusiast still exploring all the cool opportunities out there—AI/ML, development, finance, stock market, you name it. I love solving problems, learning new things, and vibe-coding xD.";
-    const para2 = "When I’m not coding, you’ll probably find me playing football, cricket, or hitting the gym. Always up for a good challenge, a new tech trend, or just some fun!"
+    const para1 = "Hey! I’m Tanishq Saxena, a 2nd year undergrad at IIT Kharagpur (CSE). I’m a tech enthusiast still exploring all the cool opportunities out there like cybersecurity, AI/ML, development, you name it. I love vibe-coding tho xD.";
+    const para2 = "When I’m not coding, you’ll probably find me grinding for acads :/ hitting the gym, doing soc work or some CTF's. Always up for fun anytime tho!"
     return (
         <section id="about" className="mb-16 py-12 border-b border-gray-800 section-hidden">
             <h2 className="text-4xl font-semibold text-gray-900 mb-6 text-center">About Me</h2>

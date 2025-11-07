@@ -8,6 +8,10 @@ const Interests = () => {
       name: "Artificial Intelligence & Machine Learning",
     },
     {
+      icon: "fas fa-shield-alt text-indigo-500",
+      name: "Cybersecurity",
+    },
+    {
       icon: "fas fa-link text-indigo-500",
       name: "Blockchain & Crypto",
     },
@@ -17,7 +21,7 @@ const Interests = () => {
     },
     {
       icon: "fas fa-tv text-indigo-500",
-      name: "Bingewatching Netflix",
+      name: "Bingewatching Netflix :)",
     },
     {
       icon: "fas fa-futbol text-indigo-500",
