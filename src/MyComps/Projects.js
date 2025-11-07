@@ -35,35 +35,35 @@ const Projects = () => {
       ],
       techstack: ["C++", "ROS2", "Docker", "RViz2"],
     },
-    {
-      heading: "PaperShare — Django Web Application",
-      date: "Ongoing",
-      desc: "Django platform for professors to upload checked answer sheets and for students to submit structured queries on specific question parts, supporting hierarchical question structures.",
-      listdesc: [
-        "Implemented hierarchical/nested question support via JSON encoding and tree traversal algorithms.",
-        "Role-based authentication and an interface for mapping student queries to specific question subparts.",
-      ],
-      techstack: ["Django", "JavaScript", "JSON"],
-      link: "https://github.com/saxenatanishq/PaperShare",
-    },
-    {
-      heading: "Undergraduate Researcher — Autonomous Ground Vehicles (AGV)",
-      date: "Apr 2025 - Present",
-      desc: "Selected to the software/AI team for AGV research at IIT Kharagpur; working on navigation, sparse optical flow and 3D reconstruction and contributing to SLAM and localization efforts.",
-      listdesc: [
-        "Projects: autonomous path planning, sparse optical flow, 3D image reconstruction and SLAM.",
-        "Currently developing navigation solutions and ROS-based modules for AGV localization.",
-      ],
-      techstack: ["ROS", "Path Planning", "Python", "C++"],
-      link: "https://github.com/saxenatanishq",
-    },
-    {
-      heading: "Winter Internship — India Space Lab (certificate & project)",
-      date: "Winter 2024",
-      desc: "Completed technical training in Space Science & Technology with hands-on exposure to drone tech, CanSat and CubeSat concepts.",
-      listdesc: ["Gained practical experience in advanced drone tech and small satellite concepts."],
-      techstack: ["Drone Tech", "CanSat", "CubeSat"],
-    },
+    // {
+    //   heading: "PaperShare — Django Web Application",
+    //   date: "Ongoing",
+    //   desc: "Django platform for professors to upload checked answer sheets and for students to submit structured queries on specific question parts, supporting hierarchical question structures.",
+    //   listdesc: [
+    //     "Implemented hierarchical/nested question support via JSON encoding and tree traversal algorithms.",
+    //     "Role-based authentication and an interface for mapping student queries to specific question subparts.",
+    //   ],
+    //   techstack: ["Django", "JavaScript", "JSON"],
+    //   link: "https://github.com/saxenatanishq/PaperShare",
+    // },
+    // {
+    //   heading: "Undergraduate Researcher — Autonomous Ground Vehicles (AGV)",
+    //   date: "Apr 2025 - Present",
+    //   desc: "Selected to the software/AI team for AGV research at IIT Kharagpur; working on navigation, sparse optical flow and 3D reconstruction and contributing to SLAM and localization efforts.",
+    //   listdesc: [
+    //     "Projects: autonomous path planning, sparse optical flow, 3D image reconstruction and SLAM.",
+    //     "Currently developing navigation solutions and ROS-based modules for AGV localization.",
+    //   ],
+    //   techstack: ["ROS", "Path Planning", "Python", "C++"],
+    //   link: "https://github.com/saxenatanishq",
+    // },
+    // {
+    //   heading: "Winter Internship — India Space Lab (certificate & project)",
+    //   date: "Winter 2024",
+    //   desc: "Completed technical training in Space Science & Technology with hands-on exposure to drone tech, CanSat and CubeSat concepts.",
+    //   listdesc: ["Gained practical experience in advanced drone tech and small satellite concepts."],
+    //   techstack: ["Drone Tech", "CanSat", "CubeSat"],
+    // },
   ];
 
   const colors = [
