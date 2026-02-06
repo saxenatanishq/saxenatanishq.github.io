@@ -1,69 +1,62 @@
 import React from "react";
 
 const Projects = () => {
-  // Projects updated from CV (Tanishq_Saxena_CV). Source: uploaded CV. :contentReference[oaicite:1]{index=1}
   const projects = [
     {
-      heading: "Target-Biased Obstacle Avoidance",
-      date: "Mar 2025",
-      desc: "Enhanced obstacle avoidance for AGV by extending Follow-The-Gap (FTG) to navigate toward specific waypoints using a custom potential function that weights gaps by width, distance and angular proximity to the target.",
+      heading: "Local INN: Localization using Invertible Neural Networks",
+      date: "Dec 2025",
+      desc: "Research project on high-speed robot localization using invertible neural networks to estimate full pose distributions with uncertainty.",
       listdesc: [
-        "Improved FTG to prefer gaps that move the vehicle toward a target waypoint (not just the largest gap).",
-        "Designed a potential function combining gap width, distance and angle to compute optimal steering.",
+        "Achieved localization accuracy comparable to particle filters while maintaining stability at high speeds (5 m/s).",
+        "Reduced localization latency from 45 Hz to 270 Hz using a VAE-based INN pipeline.",
       ],
-      techstack: ["Python", "NumPy", "ROS"],
-      link: "https://github.com/saxenatanishq/Vehicle-obstacle-avoidance",
+      techstack: ["Python", "PyTorch", "Robotics", "Probabilistic Models"],
+      link: "https://github.com/AGV-RG/Local_Inn",
     },
     {
       heading: "Civix (Smart India Hackathon)",
-      date: "Mar 2025",
-      desc: "Full-stack civic issue reporting web app enabling geotagged reports, image uploads, upvotes and role-based admin workflows; includes interactive maps and scalable backend APIs.",
+      date: "Aug 2025 – Sept 2025",
+      desc: "Full-stack civic issue reporting platform with scalable backend services and role-based workflows.",
       listdesc: [
-        "Geotagged issue reporting with Leaflet.js map integration.",
-        "Role-based JWT authentication and an admin dashboard for issue management (Open → In Progress → Resolved).",
+        "Implemented JWT authentication and role-based access control.",
+        "Designed PostgreSQL-backed issue lifecycle (Open → In Progress → Resolved) with REST APIs.",
       ],
-      techstack: ["React", "Tailwind CSS", "Node.js", "PostgreSQL", "Leaflet.js"],
+      techstack: ["React.js", "Tailwind CSS", "Node.js", "PostgreSQL"],
       link: "https://github.com/swrno/civix",
     },
     {
-      heading: "SLAM Localization Pipeline for AutoDRIVE",
-      date: "Sep 2025",
-      desc: "Built a ROS2-based SLAM / localization pipeline for the AutoDRIVE ecosystem with Docker + NVIDIA GPU acceleration; implemented TF broadcasting and RViz2 visualization.",
+      heading: "Target-Biased Obstacle Avoidance",
+      date: "Mar 2025",
+      desc: "Autonomous navigation algorithm for obstacle avoidance toward specified waypoints using LIDAR data.",
       listdesc: [
-        "Configured Docker containers with GPU passthrough and ydlidar driver integration.",
-        "Wrote a C++ ROS2 node to broadcast the full TF tree (odom → base_link) for visualization and downstream modules.",
+        "Extended Follow-the-Gap approach using a custom potential function.",
+        "Improved robustness in dynamic environments with efficient sensor preprocessing.",
       ],
-      techstack: ["C++", "ROS2", "Docker", "RViz2"],
+      techstack: ["Python", "NumPy", "Robotics"],
+      link: "https://github.com/saxenatanishq/Vehicle-obstacle-avoidance",
     },
-    // {
-    //   heading: "PaperShare — Django Web Application",
-    //   date: "Ongoing",
-    //   desc: "Django platform for professors to upload checked answer sheets and for students to submit structured queries on specific question parts, supporting hierarchical question structures.",
-    //   listdesc: [
-    //     "Implemented hierarchical/nested question support via JSON encoding and tree traversal algorithms.",
-    //     "Role-based authentication and an interface for mapping student queries to specific question subparts.",
-    //   ],
-    //   techstack: ["Django", "JavaScript", "JSON"],
-    //   link: "https://github.com/saxenatanishq/PaperShare",
-    // },
-    // {
-    //   heading: "Undergraduate Researcher — Autonomous Ground Vehicles (AGV)",
-    //   date: "Apr 2025 - Present",
-    //   desc: "Selected to the software/AI team for AGV research at IIT Kharagpur; working on navigation, sparse optical flow and 3D reconstruction and contributing to SLAM and localization efforts.",
-    //   listdesc: [
-    //     "Projects: autonomous path planning, sparse optical flow, 3D image reconstruction and SLAM.",
-    //     "Currently developing navigation solutions and ROS-based modules for AGV localization.",
-    //   ],
-    //   techstack: ["ROS", "Path Planning", "Python", "C++"],
-    //   link: "https://github.com/saxenatanishq",
-    // },
-    // {
-    //   heading: "Winter Internship — India Space Lab (certificate & project)",
-    //   date: "Winter 2024",
-    //   desc: "Completed technical training in Space Science & Technology with hands-on exposure to drone tech, CanSat and CubeSat concepts.",
-    //   listdesc: ["Gained practical experience in advanced drone tech and small satellite concepts."],
-    //   techstack: ["Drone Tech", "CanSat", "CubeSat"],
-    // },
+    {
+      heading: "Sparse Optical Flow",
+      date: "Mar 2025",
+      desc: "Implementation of pyramidal Lucas–Kanade optical flow for sparse motion tracking.",
+      listdesc: [
+        "Built image pyramids and tracking pipelines.",
+        "Focused on numerical stability and validation of motion vectors.",
+      ],
+      techstack: ["Python", "Computer Vision"],
+      link: "https://github.com/saxenatanishq/Sparse-Optical-Flow",
+    },
+    {
+      heading: "PaperShare",
+      date: "Dec 2024",
+      desc: "Web platform to digitize post-exam answer sheet review between professors and students.",
+      listdesc: [
+        "Implemented role-based access and structured query workflows.",
+        "Designed scalable backend data models for academic usage.",
+      ],
+      techstack: ["Django", "HTML", "CSS", "JavaScript", "SQLite"],
+      link: "https://github.com/saxenatanishq/PaperShare",
+    },
   ];
 
   const colors = [
@@ -74,78 +67,61 @@ const Projects = () => {
     "bg-purple-100 text-purple-800",
     "bg-yellow-100 text-yellow-800",
     "bg-blue-100 text-blue-800",
-    "bg-pink-100 text-pink-800",
   ];
 
-  const getRandomColor = () => {
-    return colors[Math.floor(Math.random() * colors.length)];
-  };
+  const getRandomColor = () =>
+    colors[Math.floor(Math.random() * colors.length)];
 
   return (
-    <section
-      id="projects"
-      className="mb-16 py-12 border-b border-gray-800 section-hidden"
-    >
+    <section id="projects" className="mb-16 py-12 border-b border-gray-800">
       <h2 className="text-4xl font-semibold text-gray-900 mb-8 text-center">
         Projects
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => {
-          return (
-            <div
-              key={project.heading}
-              className="bg-white rounded-xl shadow-lg p-6 border border-gray-200 transform hover:scale-105 transition-transform duration-300"
-            >
-              <div className="flex items-baseline justify-between mb-2">
-                <h3 className="text-2xl font-medium text-indigo-600">
-                  {project.heading}
-                </h3>
-                {project.date && (
-                  <span className="text-sm text-gray-500 ml-3">{project.date}</span>
-                )}
-              </div>
-
-              <p className="text-gray-700 mb-4">{project.desc}</p>
-
-              {project.listdesc && project.listdesc.length > 0 && (
-                <ul className="list-disc list-inside text-gray-600 text-sm mb-4">
-                  {project.listdesc.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              )}
-
-              {project.techstack && project.techstack.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techstack.map((item, idx) => {
-                    const randomColor = getRandomColor();
-                    return (
-                      <span
-                        key={`${project.heading}-tech-${idx}`}
-                        className={`${randomColor} text-xs font-semibold px-2.5 py-0.5 rounded-full`}
-                      >
-                        {item}
-                      </span>
-                    );
-                  })}
-                </div>
-              )}
-
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-indigo-600 hover:underline font-medium"
-                >
-                  View more{" "}
-                  <i className="fas fa-external-link-alt ml-1 text-sm" aria-hidden />
-                </a>
-              )}
+        {projects.map((project) => (
+          <div
+            key={project.heading}
+            className="bg-white rounded-xl shadow-lg p-6 border border-gray-200"
+          >
+            <div className="flex justify-between mb-2">
+              <h3 className="text-xl font-medium text-indigo-600">
+                {project.heading}
+              </h3>
+              <span className="text-sm text-gray-500">{project.date}</span>
             </div>
-          );
-        })}
+
+            <p className="text-gray-700 mb-4">{project.desc}</p>
+
+            <ul className="list-disc list-inside text-sm text-gray-600 mb-4">
+              {project.listdesc.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.techstack.map((tech, idx) => (
+                <span
+                  key={idx}
+                  className={`${getRandomColor()} text-xs font-semibold px-2 py-1 rounded-full`}
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-indigo-600 hover:underline text-sm"
+              >
+                View Project →
+              </a>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );

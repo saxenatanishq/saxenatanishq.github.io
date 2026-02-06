@@ -7,11 +7,12 @@ const Skills = () => {
       items: [
         { icon: "fab fa-python text-blue-700", name: "Python" },
         { icon: "fab fa-js-square text-yellow-500", name: "JavaScript" },
-        { icon: "fas fa-code text-blue-600", name: "C/C++" },
+        { icon: "fas fa-code text-blue-600", name: "C / C++" },
         { icon: "fab fa-html5 text-orange-500", name: "HTML" },
         { icon: "fab fa-css3-alt text-blue-500", name: "CSS" },
         { icon: "fas fa-database text-gray-600", name: "SQL" },
-        { icon: "fas fa-terminal text-gray-700", name: "Shell Scripting" },
+        { icon: "fas fa-project-diagram text-indigo-600", name: "Prolog" },
+        { icon: "fas fa-terminal text-gray-700", name: "Bash / Shell Scripting" },
       ],
     },
     {
@@ -20,40 +21,44 @@ const Skills = () => {
         { icon: "fas fa-leaf text-green-700", name: "Django" },
         { icon: "fab fa-node-js text-green-500", name: "Node.js" },
         { icon: "fas fa-server text-gray-500", name: "Express.js" },
-        { icon: "fab fa-react text-cyan-500", name: "React.js" },
-        { icon: "fas fa-cubes text-green-600", name: "NumPy" },
-        { icon: "fas fa-table text-blue-600", name: "Pandas" },
-        { icon: "fas fa-wind text-indigo-500", name: "Tailwind CSS" },
-        { icon: "fas fa-map-marked-alt text-green-600", name: "Leaflet.js" },
-      ],
-    },
-    {
-      category: "Tools, Frameworks & Platforms",
-      items: [
         { icon: "fas fa-robot text-gray-700", name: "ROS / ROS2" },
-        { icon: "fab fa-docker text-blue-500", name: "Docker" },
-        { icon: "fas fa-cube text-blue-700", name: "Gazebo & RViz2" },
-        { icon: "fas fa-vr-cardboard text-indigo-700", name: "OpenCV / Vision" },
-        { icon: "fab fa-git-alt text-orange-600", name: "Git & GitHub" },
-        { icon: "fab fa-linux text-gray-700", name: "Linux / Ubuntu" },
-        { icon: "fas fa-share-alt text-red-500", name: "Postman" },
+        { icon: "fas fa-cubes text-green-600", name: "NumPy" },
+        { icon: "fas fa-wind text-indigo-500", name: "Bootstrap" },
       ],
     },
     {
-      category: "Databases & Cloud",
+      category: "Tools, Platforms & Technologies",
+      items: [
+        { icon: "fab fa-git-alt text-orange-600", name: "Git & GitHub" },
+        { icon: "fab fa-docker text-blue-500", name: "Docker" },
+        { icon: "fab fa-linux text-gray-700", name: "Linux" },
+        { icon: "fas fa-share-alt text-red-500", name: "Postman" },
+        { icon: "fas fa-network-wired text-gray-600", name: "REST APIs" },
+      ],
+    },
+    {
+      category: "Databases",
       items: [
         { icon: "fas fa-database text-blue-400", name: "SQLite" },
-        { icon: "fas fa-leaf text-green-600", name: "MongoDB" },
         { icon: "fas fa-database text-indigo-500", name: "PostgreSQL" },
       ],
     },
     {
-      category: "Other Technical Skills",
+      category: "Security & CTF Skills",
       items: [
-        { icon: "fas fa-network-wired text-gray-600", name: "Networking & APIs" },
-        { icon: "fas fa-brain text-purple-600", name: "Computer Vision" },
-        { icon: "fas fa-route text-teal-600", name: "Path Planning" },
-        { icon: "fas fa-project-diagram text-yellow-600", name: "SLAM & Localization" },
+        { icon: "fas fa-bug text-red-600", name: "Web Exploitation" },
+        { icon: "fas fa-shield-alt text-indigo-600", name: "XSS, SQL Injection, CSRF" },
+        { icon: "fas fa-cookie-bite text-yellow-600", name: "HTTP & Session Security" },
+        { icon: "fas fa-user-secret text-gray-700", name: "Burp Suite" },
+      ],
+    },
+    {
+      category: "Competitive Programming",
+      items: [
+        {
+          icon: "fas fa-code text-purple-600",
+          name: "Codeforces Specialist (noobhacker123)",
+        },
       ],
     },
   ];
@@ -66,6 +71,7 @@ const Skills = () => {
       <h2 className="text-4xl font-semibold text-gray-900 mb-8 text-center">
         Technical Skills
       </h2>
+
       <div className="bg-white rounded-xl shadow-lg p-8 md:p-10 border border-gray-200">
         {skillCategories.map((category, index) => (
           <div key={index} className="mb-8">
@@ -75,7 +81,7 @@ const Skills = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {category.items.map((item, idx) => (
                 <div key={idx} className="flex items-center space-x-3">
-                  <i className={`${item.icon} text-3xl`}></i>
+                  <i className={`${item.icon} text-3xl`} />
                   <span className="text-lg font-medium text-gray-700">
                     {item.name}
                   </span>
