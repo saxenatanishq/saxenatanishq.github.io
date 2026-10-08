@@ -93,7 +93,7 @@ const TVA = () => {
 
               <div className="tva-footer">
                 <span className="tva-footer-meta">
-                  FOR ALL TIME.&nbsp;&nbsp;ALWAYS. // CITADEL
+                  TS.08&nbsp;&nbsp;MK.LXXXV // 3000
                 </span>
                 <span className="tva-footer-badge">TVA</span>
               </div>

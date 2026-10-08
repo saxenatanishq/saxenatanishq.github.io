@@ -55,11 +55,11 @@ function App() {
   }, [route]);
 
   return (
-    <>
+    <div className="page-shell">
       <Header />
       {route === "blogs" ? <BlogsPage /> : <Body />}
       <Footer />
-    </>
+    </div>
   );
 }
 
