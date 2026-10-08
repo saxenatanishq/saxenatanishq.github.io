@@ -12,6 +12,18 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Tanishq Saxena</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Root-cause fix for the localhost vs GitHub Pages layout discrepancy:
+      // Tailwind ships a built-in .container utility (width:100% + max-widths
+      // 640/768/1024/1280/1536) that collides with this site's own .container
+      // (max-width:780px). Both are single-class selectors, so the stylesheet
+      // that lands later in the document wins. In development the app's styles
+      // are injected after Tailwind's; in the production build Tailwind's
+      // runtime <style> is appended after the bundled CSS link — flipping the
+      // winner and stretching content to 1536px on wide screens. Disable just
+      // that core plugin so the site's .container is the only definition.
+      tailwind.config = { corePlugins: { container: false } };
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
