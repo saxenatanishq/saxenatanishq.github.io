@@ -1,67 +1,77 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+const readTheme = () =>
+  document.documentElement.getAttribute("data-theme") === "dark"
+    ? "dark"
+    : "light";
 
 const Header = () => {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "dark";
-  });
+  const [theme, setTheme] = useState(readTheme);
+  const transitionTimer = useRef(null);
 
-  useEffect(() => {
-    const htmlElement = document.documentElement;
-    htmlElement.classList.remove("light", "dark");
-    htmlElement.classList.add(theme);
-
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+  useEffect(
+    () => () => {
+      window.clearTimeout(transitionTimer.current);
+    },
+    []
+  );
 
   const toggleTheme = () => {
-    const icon = document.getElementById("theme-icon");
-    icon.classList.remove("animate-spin-fast");
+    const next = theme === "dark" ? "light" : "dark";
+    const root = document.documentElement;
 
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme(next);
+    root.setAttribute("data-theme", next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {
+      /* private mode — theme still applies for this session */
+    }
+
+    // Brief, subtle color fade while the theme switches.
+    root.classList.add("theme-transition");
+    window.clearTimeout(transitionTimer.current);
+    transitionTimer.current = window.setTimeout(() => {
+      root.classList.remove("theme-transition");
+    }, 300);
   };
 
+  const isDark = theme === "dark";
+
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm py-4 px-6 md:px-8 lg:px-12 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto flex justify-end items-center">
-        <nav className="flex items-center space-x-4 md:space-x-6">
-          <div className="hidden md:flex items-center space-x-4 ml-4">
+    <header className="header">
+      <div className="container">
+        <div className="header-inner">
+          <span className="header-name">Tanishq Saxena</span>
+          <nav className="header-nav">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#/blogs">Blogs</a>
             <a
               href="https://saxenatanishq.github.io/resume.pdf"
               target="_blank"
-              className="btn-header bg-blue-700 text-white hover:bg-blue-900 text-sm"
+              rel="noopener noreferrer"
+              className="nav-resume"
             >
-              <i className="fas fa-file-alt mr-2"></i> Resume
+              Resume
             </a>
-            <a
-              href="https://github.com/saxenatanishq"
-              target="_blank"
-              className="btn-header bg-gray-800 text-white hover:bg-gray-900 text-sm"
+            <button
+              type="button"
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={
+                isDark ? "Switch to light mode" : "Switch to dark mode"
+              }
+              title={isDark ? "Switch to light mode" : "Switch to dark mode"}
             >
-              <i className="fab fa-github mr-2"></i> GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/tanishq-saxena"
-              target="_blank"
-              className="btn-header bg-blue-700 text-white hover:bg-blue-900 text-sm"
-            >
-              <i className="fab fa-linkedin mr-2"></i> LinkedIn
-            </a>
-          </div>
-
-          <button
-            id="theme-toggle"
-            className="p-2 rounded-full bg-transparent text-gray-700 transition-colors duration-200 focus:outline-none"
-            onClick={toggleTheme}
-          >
-            <i
-              className={`fas ${
-                    theme === "light" ? "fa-moon" : "fa-sun animate-spin-fast"
-                } text-lg`}
-
-              id="theme-icon"
-            ></i>
-          </button>
-        </nav>
+              <i
+                className={isDark ? "fa-solid fa-moon" : "fa-solid fa-sun"}
+                aria-hidden="true"
+              />
+            </button>
+          </nav>
+        </div>
       </div>
     </header>
   );

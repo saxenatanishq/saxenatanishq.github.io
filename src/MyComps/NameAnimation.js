@@ -1,52 +1,65 @@
-import React,{ useEffect }  from 'react';
+import React, { useEffect, useRef } from "react";
+import TVA from "./TVA";
 
 const NameAnimation = () => {
-    const phrases = ["Hello, I am Tanishq Saxena!","Student at IIT Kharagpur."];
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    const phrases = [
+      "Tanishq Saxena.",
+      "a CS undergrad."
+    ];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typingSpeed = 150; // milliseconds per character
-    let deletingSpeed = 75; // milliseconds per character
-    let pauseBeforeDelete = 1500; // milliseconds to pause before deleting
-    let pauseBeforeType = 500; // milliseconds to pause before typing next phrase
+    let timer;
 
-    useEffect(() => {
-        const typingTextElement = document.getElementById('typing-text');
+    function tick() {
+      const el = textRef.current;
+      if (!el) return;
 
-        function typeWriter() {
-            const currentPhrase = phrases[phraseIndex];
+      const current = phrases[phraseIndex];
 
-            if (isDeleting) {
-                typingTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
+      if (isDeleting) {
+        charIndex--;
+        el.textContent = current.substring(0, charIndex);
+      } else {
+        charIndex++;
+        el.textContent = current.substring(0, charIndex);
+      }
 
-            let currentTypingSpeed = isDeleting ? deletingSpeed : typingSpeed;
+      let delay = isDeleting ? 60 : 120;
 
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                currentTypingSpeed = pauseBeforeDelete;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                currentTypingSpeed = pauseBeforeType;
-            }
+      if (!isDeleting && charIndex === current.length) {
+        delay = 1800;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        delay = 400;
+      }
 
-            setTimeout(typeWriter, currentTypingSpeed);
-        }
+      timer = setTimeout(tick, delay);
+    }
 
-        typeWriter();
-    }, []);
-    return (
-        <section className="flex justify-center items-center h-48 mb-8">
-            <div className="text-center">
-                <h1 id="typing-text" className="text-5xl md:text-6xl font-semibold text-indigo-600 font-mono typing-animation"></h1>
-            </div>
-        </section>
-    )
-}
+    tick();
+    return () => clearTimeout(timer);
+  }, []);
 
-export default NameAnimation
+  return (
+    <section className="hero">
+      <div className="hero-layout">
+        <div className="hero-copy">
+          <p className="hero-greeting">Hello, I'm</p>
+          <h1 className="hero-name">
+            <span ref={textRef}></span>
+            <span className="cursor" />
+          </h1>
+        </div>
+        <TVA />
+      </div>
+    </section>
+  );
+};
+
+export default NameAnimation;

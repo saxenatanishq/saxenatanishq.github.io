@@ -1,43 +1,36 @@
 import React, { useEffect } from "react";
-import NameAnimation from "../MyComps/NameAnimation";
-import About from "../MyComps/About";
-import Projects from "../MyComps/Projects";
-import Skills from "../MyComps/Skills";
-import Interests from "../MyComps/Interests";
+import NameAnimation from "./NameAnimation";
+import About from "./About";
+import Projects from "./Projects";
+import Skills from "./Skills";
 
 const Body = () => {
+  // Intersection observer for fade-in sections
   useEffect(() => {
-    const sections = document.querySelectorAll("section.section-hidden");
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1,
-    };
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove("section-hidden");
-          entry.target.classList.add("section-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
+    const els = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => els.forEach((el) => observer.unobserve(el));
   }, []);
 
   return (
-    <main class="max-w-7xl mx-auto py-8 px-6 md:px-8 lg:px-12">
+    <main className="main">
       <NameAnimation />
-      <About />
-      <Projects />
-      <Skills />
-      <Interests />
+      <div className="container">
+        <About />
+        <Projects />
+        <Skills />
+      </div>
     </main>
   );
 };

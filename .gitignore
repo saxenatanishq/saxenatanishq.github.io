@@ -21,3 +21,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.cursor
+.opencode
+.playwright-mcp
+.venv
+.vscode
+.openignore
+AGENTS.md
