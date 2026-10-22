@@ -28,7 +28,7 @@ const skillGroups = [
   },
   {
     label: "Competitive Programming",
-    items: ["Codeforces Specialist (noobhacker123)"],
+    items: ["Codeforces Expert (noobhacker123)"],
   },
 ];
 

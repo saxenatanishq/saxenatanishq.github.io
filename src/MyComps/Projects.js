@@ -2,6 +2,25 @@ import React from "react";
 
 const projects = [
   {
+    heading: "Nova Shell",
+    date: "Oct 2026",
+    cat: "Low-Level • Systems",
+    desc:
+      "High-performance, POSIX-compliant command-line interpreter in C++23 with zero-copy parsing and raw-mode terminal line editing.",
+    bullets: [
+      "Built recursive multi-stage IPC pipelines (|), file-descriptor redirection, asynchronous background job control (&), and programmable TAB completion.",
+      "Achieved sub-microsecond lexical parsing and O(1) LCP candidate resolution using std::string_view, std::span, and <charconv>.",
+    ],
+    tech: ["C++23", "Linux / POSIX", "Systems Programming"],
+    link: "",
+    benchmarks: [
+      { label: "lcp match (p50)", pct: 15, value: "116ns" },
+      { label: "span split (p50)", pct: 29, value: "331ns" },
+      { label: "var parser (p50)", pct: 50, value: "822ns" },
+      { label: "builtin exec (p50)", pct: 71, value: "1.51µs" },
+    ],
+  },
+  {
     heading: "Local INN: Localization using Invertible Neural Networks",
     date: "Dec 2025",
     desc:
@@ -68,39 +87,80 @@ const Projects = () => {
     <section id="projects" className="section fade-in">
       <p className="section-label">Projects</p>
       <div className="projects-list">
-        {projects.map((p) => (
-          <div key={p.heading} className="project-item">
-            <div className="project-header">
-              <h3 className="project-title">
-                <a href={p.link} target="_blank" rel="noopener noreferrer">
-                  {p.heading}
+        {projects.map((p) => {
+          const content = (
+            <>
+              <p className="project-desc">{p.desc}</p>
+              <ul className="project-bullets">
+                {p.bullets.map((b, i) => (
+                  <li key={i}>{b}</li>
+                ))}
+              </ul>
+              <div className="project-tags">
+                {p.tech.map((t) => (
+                  <span key={t} className="project-tag">
+                    {t}
+                  </span>
+                ))}
+              </div>
+              {p.link && (
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  View on GitHub →
                 </a>
-              </h3>
-              <span className="project-date">{p.date}</span>
-            </div>
-            <p className="project-desc">{p.desc}</p>
-            <ul className="project-bullets">
-              {p.bullets.map((b, i) => (
-                <li key={i}>{b}</li>
-              ))}
-            </ul>
-            <div className="project-tags">
-              {p.tech.map((t) => (
-                <span key={t} className="project-tag">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <a
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-link"
+              )}
+            </>
+          );
+
+          return (
+            <div
+              key={p.heading}
+              className={
+                p.benchmarks ? "project-item project-item--bench" : "project-item"
+              }
             >
-              View on GitHub →
-            </a>
-          </div>
-        ))}
+              {p.cat && <p className="project-cat">{p.cat}</p>}
+              <div className="project-header">
+                <h3 className="project-title">
+                  {p.link ? (
+                    <a href={p.link} target="_blank" rel="noopener noreferrer">
+                      {p.heading}
+                    </a>
+                  ) : (
+                    p.heading
+                  )}
+                </h3>
+                <span className="project-date">{p.date}</span>
+              </div>
+              {p.benchmarks ? (
+                <div className="project-body">
+                  <div className="project-main">{content}</div>
+                  <aside className="project-bench" aria-label="Benchmarks">
+                    <p className="project-bench-title">Benchmarks</p>
+                    {p.benchmarks.map((b) => (
+                      <div key={b.label} className="bench-row">
+                        <span className="bench-label">{b.label}</span>
+                        <span className="bench-track">
+                          <span
+                            className="bench-fill"
+                            style={{ width: b.pct + "%" }}
+                          />
+                        </span>
+                        <span className="bench-value">{b.value}</span>
+                      </div>
+                    ))}
+                  </aside>
+                </div>
+              ) : (
+                content
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );

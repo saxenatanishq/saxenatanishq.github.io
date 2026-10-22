@@ -382,6 +382,88 @@ html.theme-transition *::after {
   text-decoration: none;
 }
 
+/* Category eyebrow (used by projects that declare one) */
+.project-cat {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ft-text);
+  margin-bottom: 6px;
+}
+
+/* Benchmark variant: the heading (title + date) keeps the full width so it
+   aligns with every other project; only the body row shares space with the
+   panel, which stays quiet and compact on the right. */
+.project-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.project-body .project-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-bench {
+  flex: 0 0 224px;
+  margin-top: 3px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  padding: 9px 11px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-bench-title {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1px;
+}
+
+.bench-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bench-label {
+  flex: 0 0 90px;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.bench-track {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.bench-fill {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--ft-text);
+}
+
+.bench-value {
+  flex: 0 0 auto;
+  min-width: 42px;
+  text-align: right;
+  font-size: 10px;
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--ft-text);
+}
+
 /* ─── Skills ─────────────────────────────────────────── */
 .skills-grid {
   display: grid;
@@ -683,6 +765,16 @@ html.theme-transition *::after {
     font-size: 0.85rem;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .project-body {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .project-bench {
+    flex: none;
+    width: 100%;
   }
 }
 
